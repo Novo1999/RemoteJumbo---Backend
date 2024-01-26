@@ -1,4 +1,5 @@
 import { model, Schema } from 'mongoose'
+import { JOB_BENEFITS, JOB_POSITIONS } from '../utils/constants'
 
 const JobSchema = new Schema({
   imageUrl: String,
@@ -9,8 +10,16 @@ const JobSchema = new Schema({
     min: Number,
     max: Number,
   },
-  positions: [String],
-  benefits: [String],
+  position: {
+    type: String,
+    enum: JOB_POSITIONS,
+  },
+  benefits: [
+    {
+      type: String,
+      enum: JOB_BENEFITS,
+    },
+  ],
   location: String,
   isNew: {
     type: Boolean,
@@ -21,6 +30,9 @@ const JobSchema = new Schema({
     default: false,
   },
   jobType: String,
+  isStarred: {
+    userId: String,
+  },
 })
 
 export default model('Job', JobSchema)
