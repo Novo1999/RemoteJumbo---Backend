@@ -29,10 +29,16 @@ const JobSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  isAd: {
+    type: Boolean,
+    default: false,
+  },
   jobType: String,
   isStarred: {
     userId: [String],
   },
+  viewCount: Number,
+  applyCount: Number,
 })
 
 export default model('Job', JobSchema)

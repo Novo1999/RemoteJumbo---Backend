@@ -33,4 +33,14 @@ const JOB_BENEFITS = [
   'Professional development',
 ]
 
-export { JOB_BENEFITS, JOB_LOCATIONS, JOB_POSITIONS, JOB_TYPES }
+const JOB_SORTS = {
+  salaryDescending: 'salary(a-z)',
+  salaryAscending: 'salary(z-a)',
+  mostApplied: 'most-applied',
+  mostViewed: 'most-viewed',
+  newJobs: 'new-jobs',
+  featuredJobs: 'featured-jobs',
+  ads: 'ads',
+}
+
+export { JOB_BENEFITS, JOB_LOCATIONS, JOB_POSITIONS, JOB_TYPES, JOB_SORTS }
