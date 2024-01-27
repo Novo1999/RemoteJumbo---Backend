@@ -14,12 +14,14 @@ const JOB_POSITIONS = [
   'UX/UI Designer',
   'Data Scientist',
   'Project Manager',
+  'Frontend Developer',
   'Frontend Engineer',
   'Backend Developer',
   'React Developer',
   'Java Developer',
 ]
 const JOB_BENEFITS = [
+  'Competitive salary',
   'Competitive compensation',
   'Health insurance',
   'Flexible work hours',
@@ -28,6 +30,7 @@ const JOB_BENEFITS = [
   'Paid time off',
   'Remote-friendly culture',
   'Professional growth support',
+  'Professional development',
 ]
 
 export { JOB_BENEFITS, JOB_LOCATIONS, JOB_POSITIONS, JOB_TYPES }

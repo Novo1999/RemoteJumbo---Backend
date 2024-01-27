@@ -6,3 +6,4 @@ mockData.json
 .vercel
 dist
 .vercel
+*.populate.ts

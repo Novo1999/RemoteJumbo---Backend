@@ -21,7 +21,7 @@ const JobSchema = new Schema({
     },
   ],
   location: String,
-  isNew: {
+  new: {
     type: Boolean,
     default: false,
   },
@@ -31,7 +31,7 @@ const JobSchema = new Schema({
   },
   jobType: String,
   isStarred: {
-    userId: String,
+    userId: [String],
   },
 })
 
