@@ -5,19 +5,17 @@ const JobSchema = new Schema({
   imageUrl: String,
   title: String,
   company: String,
-  posted: Number,
+  posted: String,
   salary: {
     min: Number,
     max: Number,
   },
   position: {
     type: String,
-    enum: JOB_POSITIONS,
   },
   benefits: [
     {
       type: String,
-      enum: JOB_BENEFITS,
     },
   ],
   location: String,
