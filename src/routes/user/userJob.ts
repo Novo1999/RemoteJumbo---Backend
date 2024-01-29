@@ -4,6 +4,7 @@ import { getSingleJob } from '../../controller/user/getSingleJob'
 import { filterJobs } from '../../controller/user/filter'
 import { sortJobs } from '../../controller/user/sort'
 import { getRandomJobs } from '../../controller/user/getRandomJobs'
+import { addViewCount } from '../../controller/user/addViewCount'
 
 const router = Router()
 
@@ -14,5 +15,6 @@ router
   .get('/sort/:sortBy', sortJobs)
   .get('/random/:id', getRandomJobs)
   .get('/:id', getSingleJob)
+  .patch('/:id', addViewCount)
 
 export default router
