@@ -1,10 +1,10 @@
 import { Router } from 'express'
-import { getJobs } from '../../controller/user/getJobs'
-import { getSingleJob } from '../../controller/user/getSingleJob'
-import { filterJobs } from '../../controller/user/filter'
-import { sortJobs } from '../../controller/user/sort'
-import { getRandomJobs } from '../../controller/user/getRandomJobs'
+import { getDocCounts } from '../../controller/getDocCounts'
 import { addViewCount } from '../../controller/user/addViewCount'
+import { filterJobs } from '../../controller/user/filter'
+import { getJobs } from '../../controller/user/getJobs'
+import { getRandomJobs } from '../../controller/user/getRandomJobs'
+import { getSingleJob } from '../../controller/user/getSingleJob'
 
 const router = Router()
 
@@ -12,7 +12,7 @@ router
   .get('/all', getJobs)
   .get('/filter', filterJobs)
   .get('/star')
-  .get('/sort/:sortBy', sortJobs)
+  .get('/total-jobs', getDocCounts)
   .get('/random/:id', getRandomJobs)
   .get('/:id', getSingleJob)
   .patch('/:id', addViewCount)

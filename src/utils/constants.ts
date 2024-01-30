@@ -34,8 +34,8 @@ const JOB_BENEFITS = [
 ]
 
 const JOB_SORTS = {
-  salaryDescending: 'salary(a-z)',
-  salaryAscending: 'salary(z-a)',
+  salaryAscending: 'salary(low-high)',
+  salaryDescending: 'salary(high-low)',
   mostApplied: 'most-applied',
   mostViewed: 'most-viewed',
   newJobs: 'new-jobs',
