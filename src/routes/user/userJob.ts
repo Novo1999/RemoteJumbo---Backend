@@ -5,6 +5,7 @@ import { filterJobs } from '../../controller/user/filter'
 import { getJobs } from '../../controller/user/getJobs'
 import { getRandomJobs } from '../../controller/user/getRandomJobs'
 import { getSingleJob } from '../../controller/user/getSingleJob'
+import { searchJob } from '../../controller/user/searchJob'
 
 const router = Router()
 
@@ -13,6 +14,7 @@ router
   .get('/filter', filterJobs)
   .get('/star')
   .get('/total-jobs', getDocCounts)
+  .get('/search', searchJob)
   .get('/random/:id', getRandomJobs)
   .get('/:id', getSingleJob)
   .patch('/:id', addViewCount)
