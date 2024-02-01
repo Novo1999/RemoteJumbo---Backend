@@ -4,7 +4,7 @@ import Job from '../../model/job'
 import { JOB_SORTS } from '../../utils/constants'
 import { Query } from '../../utils/interfaces'
 
-const sortByValue = (sortBy: string) => {
+export const sortByValue = (sortBy: string) => {
   switch (sortBy) {
     case JOB_SORTS.salaryAscending:
       return { 'salary.min': 'asc' }
