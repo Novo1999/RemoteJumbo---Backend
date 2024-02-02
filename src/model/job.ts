@@ -1,5 +1,4 @@
 import { model, Schema } from 'mongoose'
-import { JOB_BENEFITS, JOB_POSITIONS } from '../utils/constants'
 
 const JobSchema = new Schema({
   imageUrl: String,

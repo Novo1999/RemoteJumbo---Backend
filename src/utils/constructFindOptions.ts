@@ -1,22 +1,7 @@
-import { Request, Response } from 'express'
-import { StatusCodes } from 'http-status-codes'
-import Job from '../../model/job'
-import { FilterQuery } from '../../utils/interfaces'
-import { sortByValue } from './getJobs'
+import { FindParam } from './interfaces'
 
-export const filterJobs = async (
-  req: Request<unknown, unknown, unknown, FilterQuery>,
-  res: Response
-) => {
-  const {
-    locations = '',
-    positions = '',
-    salary = 100,
-    types = '',
-    benefits = '',
-    sortBy,
-  } = req.query || {}
-
+export const constructFindOptions = (queries: FindParam) => {
+  const { locations, positions, types, benefits, salary, q } = queries
   const locationSplit = locations.split(',')
 
   // to get locations and state as pair separated by comma
@@ -33,17 +18,16 @@ export const filterJobs = async (
     types: types.toLowerCase().split(','),
     benefits: benefits.split(','),
   }
-
-  // gets jobs matching fields and the salary
-  const jobs = await Job.find({
+  return {
     $or: [
       { location: { $in: arraysOfQuery.locations || [] } },
       { position: { $in: arraysOfQuery.positions || [] } },
       { jobType: { $in: arraysOfQuery.types || [] } },
       { benefits: { $in: arraysOfQuery.benefits || [] } },
     ],
-    $and: [{ 'salary.min': { $lte: Number(salary) } }],
-  }).sort(sortByValue(sortBy) as {})
-
-  res.status(StatusCodes.OK).json({ result: jobs, filteredJobs: jobs.length })
+    $and: [
+      { 'salary.min': { $lte: Number(salary) } },
+      { title: { $regex: q.trim(), $options: 'i' } },
+    ],
+  }
 }
