@@ -4,7 +4,6 @@ import Job from '../../model/job'
 import { constructFindOptions } from '../../utils/constructFindOptions'
 import { Query } from '../../utils/interfaces'
 import { sortByValue } from '../../utils/sortByValue'
-import console from 'console'
 
 export const getJobs = async (
   req: Request<unknown, unknown, unknown, Query>,
@@ -22,8 +21,6 @@ export const getJobs = async (
   } = req.query || {}
 
   let findParam = {}
-
-  console.log(salary)
 
   if (locations || positions || types || benefits || q) {
     findParam = constructFindOptions({

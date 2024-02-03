@@ -12,12 +12,19 @@ export const constructFindOptions = (queries: FindParam) => {
       locationPair.push(pair.trim())
     }
   }
+  // if user only searches
+  if (!locations && !positions && !types && !benefits && q) {
+    console.log(true)
+    return { title: { $regex: q.trim(), $options: 'i' } }
+  }
+  // if there are other options
   const arraysOfQuery = {
     locations: locationPair,
     positions: positions.split(','),
     types: types.toLowerCase().split(','),
     benefits: benefits.split(','),
   }
+
   return {
     $or: [
       { location: { $in: arraysOfQuery.locations || [] } },
@@ -26,7 +33,7 @@ export const constructFindOptions = (queries: FindParam) => {
       { benefits: { $in: arraysOfQuery.benefits || [] } },
     ],
     $and: [
-      { 'salary.min': { $lte: Number(salary) } },
+      { 'salary.min': { $lte: salary } },
       { title: { $regex: q.trim(), $options: 'i' } },
     ],
   }
