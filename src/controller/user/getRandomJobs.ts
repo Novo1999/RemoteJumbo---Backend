@@ -21,9 +21,7 @@ export const getRandomJobs = async (req: Request, res: Response) => {
       },
     },
     {
-      $sample: {
-        size: 3,
-      },
+      $limit: 3,
     },
   ]
 

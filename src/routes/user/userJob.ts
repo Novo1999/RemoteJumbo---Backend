@@ -6,6 +6,7 @@ import { getRandomJobs } from '../../controller/user/getRandomJobs'
 import { getSingleJob } from '../../controller/user/getSingleJob'
 import { searchJob } from '../../controller/user/searchJob'
 import { starJob } from '../../controller/user/star'
+import { shuffleAds } from '../../controller/shuffleAds'
 
 const router = Router()
 
@@ -14,6 +15,7 @@ router
   .get('/star')
   .get('/total-jobs', getDocCounts)
   .get('/search', searchJob)
+  .put('/shuffle', shuffleAds)
   .get('/random/:id', getRandomJobs)
   .post('/star/:id', starJob)
   .get('/:id', getSingleJob)

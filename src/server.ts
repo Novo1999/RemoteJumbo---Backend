@@ -11,6 +11,7 @@ import mongoSanitize from 'express-mongo-sanitize'
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware'
 import userJobRouter from './routes/user/userJob'
 import { StatusCodes } from 'http-status-codes'
+import { shuffleAds } from './controller/shuffleAds'
 
 dotenv.config()
 
