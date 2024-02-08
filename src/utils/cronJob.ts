@@ -1,13 +1,14 @@
 import { CronJob } from 'cron'
+import { shuffleAds } from '../controller/shuffleAds'
 
 const job = new CronJob(
-  '* * * * * *',
+  '0 0 11 * * *',
   function () {
-    console.log('MESSAGE')
+    shuffleAds()
   },
   null,
   true,
-  'America/Los_Angeles'
+  'Asia/Dhaka'
 )
 
 job.start()

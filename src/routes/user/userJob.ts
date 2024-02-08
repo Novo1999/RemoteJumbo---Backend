@@ -15,7 +15,6 @@ router
   .get('/star')
   .get('/total-jobs', getDocCounts)
   .get('/search', searchJob)
-  .put('/shuffle', shuffleAds)
   .get('/random/:id', getRandomJobs)
   .post('/star/:id', starJob)
   .get('/:id', getSingleJob)
