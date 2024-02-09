@@ -10,6 +10,8 @@ import mongoose from 'mongoose'
 import morgan from 'morgan'
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware'
 import userJobRouter from './routes/user/userJob'
+import { shuffleAds } from './controller/shuffleAds'
+import * as cron from 'cron'
 
 dotenv.config()
 
@@ -29,6 +31,18 @@ app.use(morgan('dev'))
 const port = process.env.PORT || 6001
 
 app.use('/api/job', userJobRouter)
+
+// this shuffles the jobs ad status
+const cronJob = cron.CronJob.from({
+  cronTime: '0 23 * * *', // This means run at 0 minutes past 23rd hour (11 PM) every day
+  onTick: function () {
+    shuffleAds()
+  },
+  start: true,
+  timeZone: 'Asia/Dhaka',
+})
+
+cronJob.start() // Start the cron job
 
 app.use('*', (_, res: Response) => {
   res.status(StatusCodes.NOT_FOUND).json({ msg: 'not found' })
