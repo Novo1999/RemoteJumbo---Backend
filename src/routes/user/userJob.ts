@@ -7,6 +7,7 @@ import { getSingleJob } from '../../controller/user/getSingleJob'
 import { searchJob } from '../../controller/user/searchJob'
 import { starJob } from '../../controller/user/star'
 import { shuffleAds } from '../../controller/shuffleAds'
+import { getUserStarredJobs } from '../../controller/user/getUserStarredJobs'
 
 const router = Router()
 
@@ -16,6 +17,7 @@ router
   .get('/total-jobs', getDocCounts)
   .get('/search', searchJob)
   .get('/random/:id', getRandomJobs)
+  .get('/starred/:uid', getUserStarredJobs)
   .post('/star/:id', starJob)
   .get('/:id', getSingleJob)
   .patch('/:id', addViewCount)

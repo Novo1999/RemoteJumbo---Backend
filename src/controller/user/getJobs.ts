@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { StatusCodes } from 'http-status-codes'
 import Job from '../../model/job'
 import { constructFindOptions } from '../../utils/constructFindOptions'
-import { Query } from '../../utils/interfaces'
+import { Query } from '../../interfaces'
 import { sortByValue } from '../../utils/sortByValue'
 
 export const getJobs = async (

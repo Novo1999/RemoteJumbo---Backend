@@ -1,4 +1,4 @@
-import { FindParam } from './interfaces'
+import { FindParam } from '../interfaces'
 
 export const constructFindOptions = (queries: FindParam) => {
   const { locations, positions, types, benefits, salary, q } = queries

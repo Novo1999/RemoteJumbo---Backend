@@ -12,11 +12,7 @@ const JobSchema = new Schema({
   position: {
     type: String,
   },
-  benefits: [
-    {
-      type: String,
-    },
-  ],
+  benefits: [{ type: String }],
   location: String,
   new: {
     type: Boolean,
@@ -34,8 +30,8 @@ const JobSchema = new Schema({
   isStarred: {
     userId: [String],
   },
-  viewCount: Number,
-  applyCount: Number,
+  viewCount: { type: Number, default: 0 },
+  applyCount: { type: Number, default: 0 },
 })
 
 export default model('Job', JobSchema)

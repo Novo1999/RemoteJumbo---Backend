@@ -9,4 +9,4 @@ const Starred = new Schema({
   ],
 })
 
-export default model('Filter', Starred)
+export default model('Starred', Starred)

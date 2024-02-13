@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { StatusCodes } from 'http-status-codes'
 import Job from '../../model/job'
-import { Query } from '../../utils/interfaces'
+import { Query } from '../../interfaces'
 
 export const searchJob = async (
   req: Request<unknown, unknown, unknown, Query>,
