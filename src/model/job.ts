@@ -32,6 +32,19 @@ const JobSchema = new Schema({
   },
   viewCount: { type: Number, default: 0 },
   applyCount: { type: Number, default: 0 },
+  jobDescription: {
+    type: String,
+    min: [100, 'description should be at least 100 characters'],
+  },
+  companyName: {
+    type: String,
+  },
+  companyLogo: {
+    type: String,
+  },
+  companyDescription: {
+    type: String,
+  },
 })
 
 export default model('Job', JobSchema)

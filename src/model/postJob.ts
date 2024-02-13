@@ -5,7 +5,7 @@ const postJobSchema = new Schema({
     type: String,
     required: true,
   },
-  type: {
+  jobType: {
     type: String,
     required: true,
   },
