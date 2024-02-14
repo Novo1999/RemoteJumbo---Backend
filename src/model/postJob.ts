@@ -35,8 +35,8 @@ const postJobSchema = new Schema({
     required: true,
   },
   companyLogo: {
-    type: String,
-    required: true,
+    public_id: String,
+    url: String,
   },
   companyDescription: {
     type: String,
