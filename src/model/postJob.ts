@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose'
 
 const postJobSchema = new Schema({
-  title: {
+  jobTitle: {
     type: String,
     required: true,
   },
@@ -9,15 +9,15 @@ const postJobSchema = new Schema({
     type: String,
     required: true,
   },
-  location: {
+  jobLocation: {
     type: String,
     required: true,
   },
-  position: {
+  jobPosition: {
     type: String,
     required: true,
   },
-  benefits: {
+  jobBenefits: {
     type: [String],
     required: true,
   },

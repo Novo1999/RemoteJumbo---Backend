@@ -1,10 +1,10 @@
 import { model, Schema } from 'mongoose'
+import todaysDate from '../utils/formatDate'
 
 const JobSchema = new Schema({
-  imageUrl: String,
   title: String,
   company: String,
-  posted: String,
+  posted: { type: String, default: todaysDate },
   salary: {
     min: Number,
     max: Number,
@@ -40,7 +40,8 @@ const JobSchema = new Schema({
     type: String,
   },
   companyLogo: {
-    type: String,
+    public_id: String,
+    url: String,
   },
   companyDescription: {
     type: String,
