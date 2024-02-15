@@ -14,10 +14,6 @@ const JobSchema = new Schema({
   },
   benefits: [{ type: String }],
   location: String,
-  new: {
-    type: Boolean,
-    default: false,
-  },
   isFeatured: {
     type: Boolean,
     default: false,
@@ -45,6 +41,9 @@ const JobSchema = new Schema({
   },
   companyDescription: {
     type: String,
+  },
+  createdBy: {
+    userId: String,
   },
 })
 
