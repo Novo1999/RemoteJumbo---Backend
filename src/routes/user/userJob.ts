@@ -8,7 +8,7 @@ import { getUserStarredJobs } from '../../controller/user/getUserStarredJobs'
 import { postJob } from '../../controller/user/postJob'
 import { searchJob } from '../../controller/user/searchJob'
 import { starJob } from '../../controller/user/star'
-import { postJobValidator } from '../../middleware/validationMiddleware'
+import { validatePostJob } from '../../middleware/validationMiddleware'
 
 const router = Router()
 
@@ -17,7 +17,7 @@ router
   .get('/star')
   .get('/total-jobs', getDocCounts)
   .get('/search', searchJob)
-  .post('/post-job', postJobValidator, postJob)
+  .post('/post-job', validatePostJob, postJob)
   .get('/random/:id', getRandomJobs)
   .get('/starred/:uid', getUserStarredJobs)
   .post('/star/:id', starJob)

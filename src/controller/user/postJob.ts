@@ -11,7 +11,6 @@ export const postJob = async (
 ) => {
   const { companyImage, salary } = req.body
   const result = validationResult(req)
-
   if (result.isEmpty()) {
     const cloudinaryResult = await cloudinary.uploader.upload(companyImage, {
       folder: 'company_images',
@@ -35,5 +34,5 @@ export const postJob = async (
     })
     return res.status(StatusCodes.OK).json(job)
   }
-  res.send({ errors: result.array() })
+  res.status(StatusCodes.BAD_REQUEST).send({ errors: result.array() })
 }

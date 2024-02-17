@@ -42,9 +42,7 @@ const JobSchema = new Schema({
   companyDescription: {
     type: String,
   },
-  createdBy: {
-    userId: String,
-  },
+  createdBy: String,
 })
 
 export default model('Job', JobSchema)
