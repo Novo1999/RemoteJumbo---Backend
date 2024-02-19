@@ -3,6 +3,7 @@ import { FindParam } from '../interfaces'
 export const constructFindOptions = (queries: FindParam) => {
   const { locations, positions, types, benefits, salary, q } = queries
   const locationSplit = locations.split(',')
+  const regexQuery = { $regex: q.trim(), $options: 'i' }
 
   // to get locations and state as pair separated by comma
   let locationPair = []
@@ -15,7 +16,16 @@ export const constructFindOptions = (queries: FindParam) => {
   // if user only searches
   if (!locations && !positions && !types && !benefits && q) {
     console.log(true)
-    return { title: { $regex: q.trim(), $options: 'i' } }
+    return {
+      $or: [
+        {
+          title: regexQuery,
+        },
+        {
+          companyName: regexQuery,
+        },
+      ],
+    }
   }
   // if there are other options
   const arraysOfQuery = {
