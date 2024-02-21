@@ -1,8 +1,8 @@
 import { Request, Response } from 'express'
 import { StatusCodes } from 'http-status-codes'
+import { Query } from '../../interfaces'
 import Job from '../../model/job'
 import { constructFindOptions } from '../../utils/constructFindOptions'
-import { Query } from '../../interfaces'
 import { sortByValue } from '../../utils/sortByValue'
 
 export const getJobs = async (
@@ -12,7 +12,7 @@ export const getJobs = async (
   const {
     locations = '',
     positions = '',
-    salary = (await Job.findOne({}).sort({ 'salary.min': 'desc' })).salary.min, // this sets the max salary here by default as without that search result is not appearing
+    salary,
     types = '',
     benefits = '',
     limit,

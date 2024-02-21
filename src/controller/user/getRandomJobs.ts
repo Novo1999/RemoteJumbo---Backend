@@ -6,14 +6,13 @@ import Job from '../../model/job'
 export const getRandomJobs = async (req: Request, res: Response) => {
   const excludedJobId = new mongoose.Types.ObjectId(req.params.id) // Convert to ObjectId
   const { relevant } = req.query
-  console.log(excludedJobId)
 
   // user will click a job, but there will be no point showing the same job in the related jobs section
   const pipeline = [
     {
       $match: {
         _id: {
-          $ne: excludedJobId,
+          $ne: excludedJobId, // dont show the same job
         },
         position: {
           $regex: relevant,
@@ -21,7 +20,7 @@ export const getRandomJobs = async (req: Request, res: Response) => {
       },
     },
     {
-      $limit: 3,
+      $limit: 3, // only show 3 jobs
     },
   ]
 

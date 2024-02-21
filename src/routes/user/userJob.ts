@@ -2,6 +2,7 @@ import { Router } from 'express'
 import { getDocCounts } from '../../controller/getDocCounts'
 import { addViewCount } from '../../controller/user/addViewCount'
 import { getJobs } from '../../controller/user/getJobs'
+import { getMaxSalary } from '../../controller/user/getMaxSalary'
 import { getRandomJobs } from '../../controller/user/getRandomJobs'
 import { getSingleJob } from '../../controller/user/getSingleJob'
 import { getUserStarredJobs } from '../../controller/user/getUserStarredJobs'
@@ -17,6 +18,7 @@ router
   .get('/star')
   .get('/total-jobs', getDocCounts)
   .get('/search', searchJob)
+  .get('/max-salary', getMaxSalary)
   .post('/post-job', validatePostJob, postJob)
   .get('/random/:id', getRandomJobs)
   .get('/starred/:uid', getUserStarredJobs)
