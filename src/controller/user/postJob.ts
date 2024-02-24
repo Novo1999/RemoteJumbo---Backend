@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express'
+import { validationResult } from 'express-validator'
 import { StatusCodes } from 'http-status-codes'
 import Job from '../../model/job'
 import { cloudinary } from '../../utils/cloudinary'
-import { validationResult } from 'express-validator'
 
 export const postJob = async (
   req: Request,
@@ -10,6 +10,15 @@ export const postJob = async (
   next: NextFunction
 ) => {
   const { companyImage, salary } = req.body
+
+  const authorization = req.headers.authorization
+
+  if (authorization && !authorization.startsWith('Bearer')) {
+    res
+      .status(StatusCodes.UNAUTHORIZED)
+      .json({ msg: 'Not Authorized. Please Log in' })
+  }
+
   const result = validationResult(req)
   if (result.isEmpty()) {
     const cloudinaryResult = await cloudinary.uploader.upload(companyImage, {

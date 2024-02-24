@@ -26,6 +26,9 @@ const JobSchema = new Schema({
   isStarred: {
     userId: [String],
   },
+  appliedBy: {
+    userId: [String],
+  },
   viewCount: { type: Number, default: 0 },
   applyCount: { type: Number, default: 0 },
   jobDescription: {

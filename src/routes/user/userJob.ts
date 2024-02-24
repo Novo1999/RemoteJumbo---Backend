@@ -1,6 +1,8 @@
 import { Router } from 'express'
 import { getDocCounts } from '../../controller/getDocCounts'
 import { addViewCount } from '../../controller/user/addViewCount'
+import { applyJob } from '../../controller/user/applyJob'
+import { deleteJob } from '../../controller/user/deleteJob'
 import { getJobs } from '../../controller/user/getJobs'
 import { getMaxSalary } from '../../controller/user/getMaxSalary'
 import { getRandomJobs } from '../../controller/user/getRandomJobs'
@@ -25,5 +27,7 @@ router
   .post('/star/:id', starJob)
   .get('/:id', getSingleJob)
   .patch('/:id', addViewCount)
+  .delete('/delete/:id', deleteJob)
+  .post('/apply/:id', applyJob)
 
 export default router
