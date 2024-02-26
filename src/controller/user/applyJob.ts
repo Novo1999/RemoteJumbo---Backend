@@ -6,6 +6,7 @@ import Job from '../../model/job'
 export const applyJob = async (req: Request, res: Response) => {
   const idToFind = req.params.id
 
+  const { userId: idToInsert } = req.body
   const authorization = req.headers.authorization
 
   if (authorization && !authorization.startsWith('Bearer')) {
@@ -14,11 +15,12 @@ export const applyJob = async (req: Request, res: Response) => {
       .json({ msg: 'Not Authorized. Please Log in' })
   }
 
-  const { userId: idToInsert } = req.body
   const job = await Job.findOne({ _id: idToFind })
   const appliedIds = job.appliedBy.userId
   if (appliedIds.includes(idToInsert)) {
     throw new BadRequestError('You already applied to this job')
+  } else if (job.createdBy === idToInsert) {
+    throw new BadRequestError('Cannot apply to self created job')
   } else {
     appliedIds.push(idToInsert)
     job.applyCount += 1

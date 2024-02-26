@@ -31,7 +31,7 @@ export const constructFindOptions = (queries: FindParam) => {
   const arraysOfQuery = {
     locations: locationPair,
     positions: positions.split(','),
-    types: types.toLowerCase().split(','),
+    types: types.split(','),
     benefits: benefits.split(','),
   }
 
