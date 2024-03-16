@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
-import { body, header, validationResult } from 'express-validator'
+import { body, validationResult } from 'express-validator'
 import {
   BadRequestError,
   NotFoundError,

@@ -3,6 +3,7 @@ import { getDocCounts } from '../../controller/getDocCounts'
 import { addViewCount } from '../../controller/user/addViewCount'
 import { applyJob } from '../../controller/user/applyJob'
 import { deleteJob } from '../../controller/user/deleteJob'
+import { editJob } from '../../controller/user/editJob'
 import { getJobs } from '../../controller/user/getJobs'
 import { getMaxSalary } from '../../controller/user/getMaxSalary'
 import { getRandomJobs } from '../../controller/user/getRandomJobs'
@@ -22,6 +23,7 @@ router
   .get('/search', searchJob)
   .get('/max-salary', getMaxSalary)
   .post('/post-job', validatePostJob, postJob)
+  .patch('/edit-job/:id', validatePostJob, editJob)
   .get('/random/:id', getRandomJobs)
   .get('/starred/:uid', getUserStarredJobs)
   .post('/star/:id', starJob)
