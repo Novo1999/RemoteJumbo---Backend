@@ -1,5 +1,6 @@
 import bodyParser from 'body-parser'
 import cors from 'cors'
+import * as cron from 'cron'
 import dotenv from 'dotenv'
 import express, { Response } from 'express'
 import 'express-async-errors'
@@ -8,10 +9,10 @@ import helmet from 'helmet'
 import { StatusCodes } from 'http-status-codes'
 import mongoose from 'mongoose'
 import morgan from 'morgan'
-import errorHandlerMiddleware from './middleware/errorHandlerMiddleware'
-import userJobRouter from './routes/user/userJob'
 import { shuffleAds } from './controller/shuffleAds'
-import * as cron from 'cron'
+import errorHandlerMiddleware from './middleware/errorHandlerMiddleware'
+import adminJobRouter from './routes/admin/adminJob'
+import userJobRouter from './routes/user/userJob'
 
 dotenv.config()
 
@@ -31,6 +32,7 @@ app.use(morgan('dev'))
 const port = process.env.PORT || 6001
 
 app.use('/api/job', userJobRouter)
+app.use('/api/job/admin', adminJobRouter)
 
 // this shuffles the jobs ad status
 const cronJob = cron.CronJob.from({
