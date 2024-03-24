@@ -1,5 +1,33 @@
 import { Request, Response } from 'express'
 import { StatusCodes } from 'http-status-codes'
-import { BadRequestError, NotFoundError } from '../../errors/customError'
+import {
+  NotFoundError,
+  UnauthenticatedError,
+  UnauthorizedError,
+} from '../../errors/customError'
+import Job from '../../model/job'
 
-export const getJobs = async (req: Request, res: Response) => {}
+export const deleteJob = async (req: Request, res: Response) => {
+  console.log(2)
+  const { id, adminId } = req.params
+  console.log(req.params)
+  const { authorization } = req.headers
+
+  const adminUID = process.env.ADMIN_UID
+
+  if (authorization && !authorization.startsWith('Bearer')) {
+    throw new UnauthenticatedError('Please log in')
+  }
+
+  if (adminId !== adminUID) {
+    throw new UnauthorizedError('Only admin can delete a job, 🔥')
+  }
+
+  const foundJob = await Job.findOne({ _id: id })
+  if (!foundJob) {
+    throw new NotFoundError('Job not found')
+  }
+  await Job.deleteOne({ _id: id })
+
+  res.status(StatusCodes.OK).json({ msg: `${foundJob.title} deleted` })
+}
