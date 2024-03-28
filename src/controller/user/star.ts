@@ -14,7 +14,6 @@ export const starJob = async (req: Request, res: Response) => {
   }
 
   const { userId: idToInsert } = req.body
-  console.log('ID: ' + idToFind)
   const job = await Job.findOne({ _id: idToFind })
   const starredIds = job.isStarred.userId
   // pushing the user id to the jobs to set how many users have starred the job
