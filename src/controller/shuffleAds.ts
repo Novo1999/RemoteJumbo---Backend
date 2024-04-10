@@ -1,7 +1,7 @@
-import mongoose from 'mongoose'
-import Job from '../model/job'
 import dotenv from 'dotenv'
+import mongoose from 'mongoose'
 import path from 'path'
+import Job from '../model/job'
 
 dotenv.config({ path: path.resolve(__dirname, '../.env') })
 
@@ -13,7 +13,7 @@ export const shuffleAds = async () => {
       job.isAd = !job.isAd
       await job.save()
     }
-    console.log('DONE')
+    console.log('CRON DONE')
   } catch (error) {
     console.log(error)
   }

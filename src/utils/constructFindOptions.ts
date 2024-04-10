@@ -15,7 +15,6 @@ export const constructFindOptions = (queries: FindParam) => {
   }
   // if user only searches
   if (!locations && !positions && !types && !benefits && q) {
-    console.log(true)
     return {
       $or: [
         {

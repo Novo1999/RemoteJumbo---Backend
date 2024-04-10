@@ -8,9 +8,7 @@ import {
 import Job from '../../model/job'
 
 export const deleteJob = async (req: Request, res: Response) => {
-  console.log(2)
   const { id, adminId } = req.params
-  console.log(req.params)
   const { authorization } = req.headers
 
   const adminUID = process.env.ADMIN_UID
